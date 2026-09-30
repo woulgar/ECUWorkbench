@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-30T15:11:43Z",
+  "ticket": "T-0063",
+  "tests": {
+    "command": "python -m pytest -q",
+    "exit_status": 0,
+    "stdout": "......................................                                   [100%]\n38 passed in 1.56s"
+  },
+  "mcp": {
+    "stdio_sdk_roundtrip": "passed in test_mcp_transport.py",
+    "tools": 4,
+    "claude_local_connection": "mcp get reports Connected",
+    "codex_registration": "mcp get enabled stdio"
+  },
+  "skill": {
+    "quick_validate": "passed",
+    "installed_hosts": [
+      "codex",
+      "claude"
+    ],
+    "forward_review": "independent missing-signature/units and GEN1 MINI Lua scenario"
+  },
+  "agents": {
+    "design": "Claude CLI claude-sonnet-5; docs/PLAN.md",
+    "implementation": "Codex worker; src/tests",
+    "review": "independent Codex reviewer"
+  },
+  "hardware": "not connected",
+  "inference": "none",
+  "limits": [
+    "synthetic fixtures, not engine calibration acceptance",
+    "native MaxxECU/INI/DBC adapters planned",
+    "full plugin loader/account/public directory submission untested; CLI MCP setup tested"
+  ]
+}

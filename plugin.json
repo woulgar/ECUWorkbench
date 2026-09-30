@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ecuworkbench",
+  "version": "0.1.0",
+  "description": "Offline ECU tune inspection, version-aware comparisons and CSV log analysis for coding agents.",
+  "author": { "name": "woulgar" },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "ECUWorkbench",
+        "shortDescription": "ECU files for coding agents",
+        "longDescription": "Inspect local tune files and logs with firmware identity, original units and source hashes. Offline read-only starter; hardware adapters are planned.",
+        "developerName": "woulgar",
+        "category": "Developer Tools",
+        "defaultPrompt": "Inspect these ECU tune files and logs, preserving firmware identity and units."
+      }
+    }
+  }
+}

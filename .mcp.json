@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ecuworkbench": {
+      "command": "python",
+      "args": ["-m", "ecuworkbench.server"],
+      "env": { "ECU_WORKBENCH_ROOT": "${CLAUDE_PLUGIN_ROOT}/workspace" }
+    }
+  }
+}

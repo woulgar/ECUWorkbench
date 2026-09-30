@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ecuworkbench"
+version = "0.1.0"
+description = "Local ECU artifact analysis tools and agent skills"
+requires-python = ">=3.12"
+dependencies = ["mcp>=1.20,<2", "defusedxml>=0.7,<1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+ecuworkbench-mcp = "ecuworkbench.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

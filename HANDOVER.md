@@ -1,0 +1,46 @@
+# Handover entry point
+
+Read AGENTS.md, constitution.md and README.md before resuming work. Preserve existing project-specific handover history and entry points.
+
+## Handover format
+
+Append one entry per completed bounded work package; do not invent current project status.
+
+- Timestamp: ISO 8601 UTC (`YYYY-MM-DDTHH:MM:SSZ`).
+- Ticket and executor.
+- Changes: concrete files and resulting behavior.
+- Verification: exact command, exit status and evidence path.
+- Open issues and next action.
+- Publication: owner T-0063 explicitly authorizes this new public repository.
+
+Live portfolio status is generated in `C:/MyCodes/company/reports/project-standards.json`.
+
+
+<!-- company-project-standard:v1 -->
+## Company documentation standard
+
+Read [PROJECT_STANDARDS.md](C:/MyCodes/company/docs/PROJECT_STANDARDS.md) for shared file formats and new-project templates.
+Existing project requirements, storage contracts and model policies remain authoritative;
+this reference does not migrate domain data or change those requirements.
+Read AGENTS.md, constitution.md and HANDOVER.md before working. Record handovers with
+evidence and UTC timestamps. Do not publish or create a remote for a local-only project.
+<!-- /company-project-standard -->
+
+## 2026-09-30T15:11:43Z — T-0063 — measured starter
+
+- Claude CLI Sonnet 5 wrote docs/PLAN.md; Codex implemented offline artifact tools;
+  independent reviewer tested and caught firmwareInfo/signature confusion. Fixed
+  and verified: signature only, display metadata separate; missing identity fails.
+- Verification: own Python environment pytest exit 0, ......................................                                   [100%]
+38 passed in 1.56s;
+  real SDK stdio initialize/list/call, four tools, path refusal included. pip check
+  exit 0; skill quick_validate exit 0; Claude plugin manifest validation exit 0.
+- Local skill installed for Claude/Codex. Claude project MCP reports Connected;
+  Codex global MCP enabled with only workspace file root. New session required.
+- No local inference, hardware access, vendor downloads or private captures.
+  Tests use synthetic fixtures. `.project` personal instruction paths omitted
+  from the public starter; template identity retained.
+- Open: native MaxxECU formats, actual vendor exports, simulator/bench,
+  calibration quality, full plugin loader and public plugin directory submission.
+- Next: owner selects ECU/firmware and supplies exported files for adapter test.
+  Public repository is the starter code, not a certified ECU compatibility claim.

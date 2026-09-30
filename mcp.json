@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "ecuworkbench": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["-m", "ecuworkbench.server"],
+      "cwd": "${PLUGIN_ROOT}",
+      "env": { "ECU_WORKBENCH_ROOT": "${PLUGIN_ROOT}/workspace" }
+    }
+  }
+}

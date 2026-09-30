@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "template_version": 1,
+  "project_id": "a8efd85df76c24a7",
+  "publication_policy": "github_existing",
+  "allow_create_remote": false,
+  "allow_publish": false,
+  "instruction_sources_before_apply": [],
+  "owner_publication_authorization": "T-0063, owner explicitly requests new public GitHub repository, 2026-09-30"
+}

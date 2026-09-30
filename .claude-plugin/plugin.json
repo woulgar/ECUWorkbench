@@ -1,0 +1,8 @@
+{
+  "name": "ecuworkbench",
+  "version": "0.1.0",
+  "description": "Offline ECU artifacts and engineering workflow",
+  "author": { "name": "woulgar" },
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}
