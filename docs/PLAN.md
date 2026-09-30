@@ -116,25 +116,25 @@ Bu özellik v0.1'de yoktur; yalnız gelecekteki bir milestone için sözleşme b
 
 | Milestone | Kapsam | Kabul kanıtı |
 | --- | --- | --- |
-| M0 (mevcut) | `.msq` inceleme/karşılaştırma, CSV özet, `capabilities` | `tests/` altında sentetik fixture testleri; henüz bu oturumda çalıştırılmadı (bkz. §11) |
+| M0 (mevcut) | `.msq` inceleme/karşılaştırma, CSV özet, `capabilities` | 38 sentetik test + gerçek stdio MCP; bağımsız kabul §13 |
 | M1 | MaxxECU XML/TSV sürüm şeması ve ayrı MSQ/INI okuyucu | §4 sürüm/birim/şema red yollarının kanıtı |
 | M2 | Reviewed change proposal (baseline hash + eski değer + birim + öneri metni, yalnız yeni dosya) | §5 sözleşmesine uyan örnek üretim + red yollarının testi |
 | M3 | rusEFI simülatör çıktısıyla gerçekçi fixture doğrulama | Simülatör kurulum kanıtı + üretilen dosya + testten geçme kaydı |
 | M4 | Bench'te gerçek donanımdan dışa aktarılmış dosyalarla doğrulama | Sahip onayı + bench kanıt notu; bu belge canlı ECU erişimi eklemez |
 
-## 10. Kanıt yolları (planlanan, henüz üretilmemiş)
+## 10. Kanıt yolları
 
 - Kod: `src/ecuworkbench/server.py`, `src/ecuworkbench/artifacts.py` (Codex sahipliğinde, mevcut).
-- Testler (Codex sahipliğinde, planlanan): `tests/test_artifacts.py`, `tests/fixtures/*.msq`, `tests/fixtures/*.csv`.
-- Doğrulama komutu ve çıktısı bu oturumda çalıştırılmadı; gözetmen ayrı çalıştırır (görev talimatı).
+- Mevcut testler: `tests/test_artifacts.py`, `tests/test_mcp.py`, `tests/test_mcp_transport.py`; sentetik fixture'lar test içinde oluşturulur.
+- Bağımsız doğrulama çıktısı: `reports/verification.json`; Claude planlama koşusu test çalıştırmadı, Codex kabul koşusu çalıştırdı.
 - MaxxECU/M1 fixture'ları: `tests/fixtures/maxxecu/*` (planlanan yol; henüz yok).
 
-## 11. Test edilmemiş kapılar — açık durum
+## 11. Doğrulama sınırları
 
-- Bu planı yazarken `src/ecuworkbench` testleri bu oturumda **çalıştırılmadı**; M0 kutusundaki "uygulanmış" ifadesi yalnız kaynak kodu okumaya dayanır, davranış kanıtı değildir.
-- `ECU_WORKBENCH_ROOT` ortam değişkeninin gerçek bir MCP istemcisinde (Claude/Codex) uçtan uca stdio ile çalıştığı bu oturumda doğrulanmadı.
+- Claude planı yazarken test çalıştırmadı. Sonraki bağımsız kabul M0 için 38 testi ve gerçek MCP taşımasını doğruladı; §13 ve rapora bak.
+- Resmî SDK stdio çağrısı geçti; Claude bağlantısı Connected, Codex kaydı enabled. Bir modelin bu araçlarla gerçek ECU mühendisliği yaptığı ölçülmedi; yeni oturum gerekir.
 - rusEFI simülatörünün bu makinede kurulup çalıştığı doğrulanmadı; §6 yalnız plan.
-- Hiçbir çıkarım veya tahmini "muhtemelen çalışır" ifadesi kullanılmamıştır; yukarıdaki maddeler açıkça bilinmiyor/yapılmadı olarak işaretlidir.
+- Gerçek araç kalibrasyonu ve simülatör/bench kapıları ölçülmedi; dosya/taşıma testleri bu kapıların yerine geçmez.
 
 ## 12. Sahibe sorular (araç/donanım/tune-log seçimi öncesi)
 

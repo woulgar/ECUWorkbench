@@ -1,5 +1,7 @@
 # ECUWorkbench
 
+[Public repository](https://github.com/woulgar/ECUWorkbench) · [Verified CI](https://github.com/woulgar/ECUWorkbench/actions/runs/36736023360)
+
 Local ECU artifact tools and an engineering skill for Claude Code and Codex.
 This v0.1 starter inspects exported files; it does not connect to an ECU,
 flash firmware, burn tunes or generate engine calibration targets.

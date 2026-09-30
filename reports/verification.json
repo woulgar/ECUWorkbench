@@ -32,5 +32,17 @@
     "synthetic fixtures, not engine calibration acceptance",
     "native MaxxECU/INI/DBC adapters planned",
     "full plugin loader/account/public directory submission untested; CLI MCP setup tested"
-  ]
+  ],
+  "publication": {
+    "verified_at": "2026-09-30T15:21:11Z",
+    "repository": "https://github.com/woulgar/ECUWorkbench",
+    "visibility": "PUBLIC",
+    "branch": "main",
+    "tested_commit": "777ed67",
+    "github_actions": {
+      "run_id": 36736023360,
+      "conclusion": "success",
+      "url": "https://github.com/woulgar/ECUWorkbench/actions/runs/36736023360"
+    }
+  }
 }
