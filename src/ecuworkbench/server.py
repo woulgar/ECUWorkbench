@@ -24,7 +24,7 @@ def inspect_tune(path: str) -> dict[str, Any]:
 
 @mcp.tool(annotations=READ_ONLY)
 def compare_tunes(left: str, right: str) -> dict[str, Any]:
-    """Compare raw MSQ constants with matching firmware signatures and shared units; never write a tune."""
+    """Compare raw MSQ constants when firmware signatures match and every compared constant declares units; never write a tune."""
     return artifacts.compare_tunes(left, right)
 
 

@@ -154,16 +154,17 @@ def inspect_tune(path: str) -> dict[str, Any]:
 
 
 def compare_tunes(left: str, right: str) -> dict[str, Any]:
-    """Compare raw constants only when firmware signatures and shared units agree."""
+    """Compare raw constants only when firmware signatures match and every compared constant declares units."""
     before, after = inspect_tune(left), inspect_tune(right)
     signature = before["firmware_signature"]
     if not signature or signature != after["firmware_signature"]:
         raise ArtifactError("Comparison requires matching nonempty firmware signatures.")
     old = {(item["page"], item["name"]): item for item in before["constants"]}
     new = {(item["page"], item["name"]): item for item in after["constants"]}
-    for key in old.keys() & new.keys():
-        if old[key]["units"] is None or new[key]["units"] is None:
+    for key in sorted(old.keys() | new.keys()):
+        if any(item is not None and item["units"] is None for item in (old.get(key), new.get(key))):
             raise ArtifactError(f"Unknown units for page {key[0]}, constant {key[1]}; explicit unit metadata is required.")
+    for key in sorted(old.keys() & new.keys()):
         if old[key]["units"] != new[key]["units"]:
             raise ArtifactError(f"Unit mismatch for page {key[0]}, constant {key[1]}; no conversion is inferred.")
     changes = []

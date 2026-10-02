@@ -105,6 +105,42 @@ def test_both_unknown_units_refused_but_explicit_dimensionless_allowed(root):
     assert len(compare_tunes("before.msq", "after.msq")["changes"]) == 1
 
 
+@pytest.mark.parametrize("direction", ["added", "removed"])
+def test_added_removed_constant_with_unknown_units_refused(root, direction):
+    write(root, "base.msq", msq(signature="SYNTHETIC-SERIAL-1"))
+    write(root, "extended.msq", msq(signature="SYNTHETIC-SERIAL-1",
+                                    extras='<constant name="newUnknown">42</constant>'))
+    unknown = next(item for item in inspect_tune("extended.msq")["constants"]
+                   if item["name"] == "newUnknown")
+    assert unknown["units"] is None
+    left, right = ("base.msq", "extended.msq") if direction == "added" else ("extended.msq", "base.msq")
+    with pytest.raises(ArtifactError, match="Unknown units for page 1, constant newUnknown"):
+        compare_tunes(left, right)
+
+
+@pytest.mark.parametrize("units", ["", "kPa"])
+@pytest.mark.parametrize("direction", ["added", "removed"])
+def test_added_removed_constant_with_declared_units_allowed(root, units, direction):
+    write(root, "base.msq", msq(signature="SYNTHETIC-SERIAL-1"))
+    write(root, "extended.msq", msq(signature="SYNTHETIC-SERIAL-1",
+                                    extras=f'<constant name="newDeclared" units="{units}">42</constant>'))
+    left, right = ("base.msq", "extended.msq") if direction == "added" else ("extended.msq", "base.msq")
+    present = {"page": "1", "name": "newDeclared", "units": units, "value": "42"}
+    assert compare_tunes(left, right)["changes"] == [{
+        "page": "1", "name": "newDeclared", "change": direction,
+        "before": None if direction == "added" else present,
+        "after": present if direction == "added" else None,
+    }]
+
+
+def test_unknown_units_refusal_precedes_shared_unit_mismatch(root):
+    write(root, "before.msq", msq(signature="SYNTHETIC-SERIAL-1"))
+    write(root, "after.msq", msq(signature="SYNTHETIC-SERIAL-1", units="rad/s",
+                                 extras='<constant name="newUnknown">42</constant>'))
+    with pytest.raises(ArtifactError, match="Unknown units for page 1, constant newUnknown"):
+        compare_tunes("before.msq", "after.msq")
+
+
 @pytest.mark.parametrize("body", [
     '<!DOCTYPE msq [<!ENTITY secret SYSTEM "file:///etc/passwd">]><msq><page number="1"><constant name="x">&secret;</constant></page></msq>',
     '<!DOCTYPE msq><msq><page number="1"><constant name="x">1</constant></page></msq>',
